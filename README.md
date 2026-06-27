@@ -1,4 +1,4 @@
-# Kelompok 7: Fruit Freshness Classification, Comparison of CNN Model Performance Using Image Preprocessing Techniques on EfficientNetB0 and ResNet50V2
+# Group 5: Fruit Freshness Classification, Comparison of CNN Model Performance Using Image Preprocessing Techniques on EfficientNetB0 and ResNet50V2
 
 A computer vision project comparing CNN model performance for binary fruit freshness classification (**fresh** vs **rotten**), using transfer learning on **EfficientNetB0** and **ResNet50V2**, with and without image preprocessing (Gaussian Blur + CLAHE).
 
