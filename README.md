@@ -1,4 +1,4 @@
-# Group 5: Fruit Freshness Classification, Comparison of CNN Model Performance Using Image Preprocessing Techniques on EfficientNetB0 and ResNet50V2
+# Group 5 — Fruit Freshness Classification: Comparison of CNN Model Performance Using Image Preprocessing Techniques on EfficientNetB0 and ResNet50V2
 
 A computer vision project comparing CNN model performance for binary fruit freshness classification (**fresh** vs **rotten**), using transfer learning on **EfficientNetB0** and **ResNet50V2**, with and without image preprocessing (Gaussian Blur + CLAHE).
 
@@ -51,7 +51,7 @@ Final evaluation uses **Test Time Augmentation (TTA)** with 7 steps (horizontal 
 |---|---|---|---|---|
 | EfficientNetB0 — WITH preprocessing | 0.8889 | 0.8889 | 0.8889 | 0.8889 |
 | EfficientNetB0 — WITHOUT preprocessing | 0.8611 | 0.8622 | 0.8611 | 0.8610 |
-| **ResNet50V2 — WITH preprocessing** ★ | **0.9444** | **0.9500** | **0.9444** | **0.9443** |
+| **ResNet50V2 — WITH preprocessing**  | **0.9444** | **0.9500** | **0.9444** | **0.9443** |
 | ResNet50V2 — WITHOUT preprocessing | 0.9167 | 0.9286 | 0.9167 | 0.9161 |
 
 **ResNet50V2 with preprocessing** came out on top: the only variant with zero false negatives on the fresh class (confusion matrix: 18/18 fresh correctly classified, only 2/18 rotten misclassified as fresh). Preprocessing consistently improved both architectures (+2.8% F1-score on average), and ResNet50V2's skip connections handled subtle visual cues (gradual discoloration, small spots) better than EfficientNetB0's compound scaling. The most common error across all models was misclassifying partially-rotten fruit as fresh, likely because CLAHE-enhanced contrast still can't fully compensate for cases where most of the fruit's surface still looks fresh.
