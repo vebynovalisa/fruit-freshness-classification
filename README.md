@@ -56,18 +56,59 @@ Final evaluation uses **Test Time Augmentation (TTA)** with 7 steps (horizontal 
 
 **ResNet50V2 with preprocessing** came out on top: the only variant with zero false negatives on the fresh class (confusion matrix: 18/18 fresh correctly classified, only 2/18 rotten misclassified as fresh). Preprocessing consistently improved both architectures (+2.8% F1-score on average), and ResNet50V2's skip connections handled subtle visual cues (gradual discoloration, small spots) better than EfficientNetB0's compound scaling. The most common error across all models was misclassifying partially-rotten fruit as fresh, likely because CLAHE-enhanced contrast still can't fully compensate for cases where most of the fruit's surface still looks fresh.
 
+## MLflow Experiment Tracking
+
+The MLflow pipeline for this project is included as a separate deliverable.
+
+| File | Description |
+|---|---|
+| `MLflow.ipynb` | Notebook that logs all 4 model variants as MLflow runs — params, metrics, and model artifacts |
+| `artifacts.zip` | Pre-run MLflow tracking data: `mlflow.db` (SQLite) + `mlruns/` with logged model artifacts |
+
+**Experiment name:** `Fruit Freshness Classification - EfficientNetB0 vs ResNet50V2`
+
+**Runs logged (4 total):**
+
+| Run name | test_f1 | test_accuracy |
+|---|---|---|
+| `EfficientNetB0_with_preprocessing` | 0.8889 | 0.8889 |
+| `EfficientNetB0_without_preprocessing` | 0.8610 | 0.8611 |
+| `ResNet50V2_with_preprocessing` | 0.9443 | 0.9444 |
+| `ResNet50V2_without_preprocessing` | 0.9161 | 0.9167 |
+
+Each run logs: architecture, preprocessing config, all training hyperparameters (phases 1 & 2), TTA steps, dataset split sizes, test metrics (accuracy/precision/recall/F1), confusion matrix values (TP/TN/FP/FN), final validation accuracy/loss, and a stub model artifact with the correct classifier head.
+
+**To view results locally:**
+```bash
+# Extract artifacts.zip first, then:
+pip install mlflow
+mlflow ui --backend-store-uri sqlite:///mlflow.db
+# Open http://127.0.0.1:5000
+```
+
+**To re-run the pipeline from scratch:**
+```bash
+jupyter notebook MLflow.ipynb
+# Requires: tensorflow, mlflow, numpy
+```
+
+> **Note:** `MLflow.ipynb` uses stub models (same head architecture, randomly initialized weights) to keep the demo fast and reproducible. The actual trained weights are in `keras_models/`. Metrics logged are the real results from Table 1 of the paper.
+
 ## Tech Stack
 - **Deep Learning:** TensorFlow, Keras
 - **Image Processing:** OpenCV (cv2), Pillow (PIL)
 - **Evaluation:** Scikit-Learn (classification_report, confusion_matrix, accuracy/precision/recall/F1)
 - **Data Handling:** NumPy, h5py, Pathlib
 - **Visualization:** Matplotlib, Seaborn
+- **Experiment Tracking:** MLflow
 - **Environment:** Python, Google Colab (GPU)
 
 ## File Structure
 ```
 fruit-freshness-classification/
 ├── CompVis_Fruit_Freshness.ipynb   ← Main notebook: preprocessing, training, evaluation, TTA
+├── MLflow.ipynb                    ← MLflow tracking pipeline (logs all 4 variants)
+├── artifacts.zip                   ← MLflow artifacts: mlflow.db + mlruns/ (extract before use)
 ├── Dataset.zip                     ← Fruits Quality: Fresh VS Rotten (Kaggle), extract to get train/valid/test
 ├── fruit_splits.h5                 ← Stratified train/valid/test split indices
 ├── keras_models/                   ← Trained model weights (stored via Git LFS)
