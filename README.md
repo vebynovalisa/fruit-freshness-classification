@@ -2,6 +2,16 @@
 
 A computer vision project comparing CNN model performance for binary fruit freshness classification (**fresh** vs **rotten**), using transfer learning on **EfficientNetB0** and **ResNet50V2**, with and without image preprocessing (Gaussian Blur + CLAHE).
 
+## Authors & Contributions
+
+This project was completed collaboratively by all team members. All members contributed to dataset preparation, image preprocessing, model development, training, evaluation, result analysis, report writing, presentation preparation, and demo video production.
+
+| Name | Student ID |
+|------|------------|
+| Haniah Humayra | 2802564446 |
+| Veby Novalisa | 2802552811 |
+| Zahra' Zakiyyah Priyono | 2802492554 |
+
 ## Background
 
 Manual fruit quality inspection is slow, inconsistent, and easily affected by lighting conditions. This project explores whether a CNN-based system, combined with image enhancement techniques, can classify fruit freshness more reliably than a baseline model without preprocessing.
