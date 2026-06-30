@@ -116,25 +116,26 @@ jupyter notebook MLflow.ipynb
 ## File Structure
 ```
 fruit-freshness-classification/
-├── CompVis_Fruit_Freshness.ipynb   ← Main notebook: preprocessing, training, evaluation, TTA
-├── MLflow.ipynb                    ← MLflow tracking pipeline (logs all 4 variants)
-├── artifacts.zip                   ← MLflow artifacts: mlflow.db + mlruns/ (extract before use)
-├── Dataset.zip                     ← Fruits Quality: Fresh VS Rotten (Kaggle), extract to get train/valid/test
-├── fruit_splits.h5                 ← Stratified train/valid/test split indices
-├── keras_models/                   ← Trained model weights (stored via Git LFS)
-│   ├── eff_with_p1.keras           ← EfficientNetB0 WITH preprocessing, Phase 1
-│   ├── eff_with_p2.keras           ← EfficientNetB0 WITH preprocessing, Phase 2 (fine-tuned)
-│   ├── eff_wo_p1.keras             ← EfficientNetB0 WITHOUT preprocessing, Phase 1
-│   ├── eff_wo_p2.keras             ← EfficientNetB0 WITHOUT preprocessing, Phase 2 (fine-tuned)
-│   ├── res_with_p1.keras           ← ResNet50V2 WITH preprocessing, Phase 1
-│   ├── res_with_p2.keras           ← ResNet50V2 WITH preprocessing, Phase 2 (fine-tuned)
-│   ├── res_wo_p1.keras             ← ResNet50V2 WITHOUT preprocessing, Phase 1
-│   └── res_wo_p2.keras             ← ResNet50V2 WITHOUT preprocessing, Phase 2 (fine-tuned)
-├── Outputs/                        ← Generated results
-│   ├── confusion_matrices.png      ← Confusion matrix for all 4 model variants
-│   ├── metric_comparison.png       ← Accuracy/Precision/Recall/F1 bar chart comparison
-│   ├── training_curves.png         ← Accuracy & loss curves (Head Training + Fine-Tuning)
-│   ├── preprocessing_diff.png      ← Visual comparison: WITH vs WITHOUT preprocessing
+├── CompVis_Fruit_Freshness.ipynb           ← Main notebook: preprocessing, training, evaluation, TTA
+├── MLflow.ipynb                            ← MLflow tracking pipeline (logs all 4 variants)
+├── Final Project CompVis Presentation.pdf  ← Final project presentation slides
+├── artifacts.zip                           ← MLflow artifacts: mlflow.db + mlruns/ (extract before use)
+├── Dataset.zip                             ← Fruits Quality: Fresh VS Rotten (Kaggle), extract to get train/valid/test
+├── fruit_splits.h5                         ← Stratified train/valid/test split indices
+├── keras_models/                           ← Trained model weights (stored via Git LFS)
+│   ├── eff_with_p1.keras                   ← EfficientNetB0 WITH preprocessing, Phase 1
+│   ├── eff_with_p2.keras                   ← EfficientNetB0 WITH preprocessing, Phase 2 (fine-tuned)
+│   ├── eff_wo_p1.keras                     ← EfficientNetB0 WITHOUT preprocessing, Phase 1
+│   ├── eff_wo_p2.keras                     ← EfficientNetB0 WITHOUT preprocessing, Phase 2 (fine-tuned)
+│   ├── res_with_p1.keras                   ← ResNet50V2 WITH preprocessing, Phase 1
+│   ├── res_with_p2.keras                   ← ResNet50V2 WITH preprocessing, Phase 2 (fine-tuned)
+│   ├── res_wo_p1.keras                     ← ResNet50V2 WITHOUT preprocessing, Phase 1
+│   └── res_wo_p2.keras                     ← ResNet50V2 WITHOUT preprocessing, Phase 2 (fine-tuned)
+├── Outputs/                                ← Generated results
+│   ├── confusion_matrices.png              ← Confusion matrix for all 4 model variants
+│   ├── metric_comparison.png               ← Accuracy/Precision/Recall/F1 bar chart comparison
+│   ├── training_curves.png                 ← Accuracy & loss curves (Head Training + Fine-Tuning)
+│   ├── preprocessing_diff.png              ← Visual comparison: WITH vs WITHOUT preprocessing
 │   ├── preds_EfficientNetB0_With_Preprocessing.png  ← Sample predictions, EfficientNetB0
 │   └── preds_ResNet50V2_With_Preprocessing.png      ← Sample predictions, ResNet50V2
 └── README.md
